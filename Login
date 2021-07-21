@@ -1,0 +1,42 @@
+database = {'juan':'765hu', 'pedro':'fdk4', 'jorge': '273hu'}
+
+def script():
+    user= input(str('Please enter your username'))
+    password = input((str('Please enter your password')))
+
+    if user in database.keys():
+        if password == database.get(user):
+            print('You are now succesfully connected')
+        else:
+            print('Your username exists in the database but the password you are using is incorrect')
+
+            answer = str(input('Type "Again", if you want to retry, or type "Create" if you want to create a new account'))
+
+            while not (answer == 'Again' or answer == 'Create'):
+                answer = input(str('Please type either Again or Create'))
+
+            if answer == 'Again':
+                script()
+
+            elif answer == 'Create':
+                nuser = input(str('Please enter your username'))
+                npassword = input((str('Please enter your password')))
+                database[nuser] = npassword
+
+    else:
+        answer = str(input('Type "Again", if you want to retry, or type "Create" if you want to create a new account'))
+
+        while not (answer == 'Again' or answer == 'Create'):
+            answer = input(str('Please type either Again or Create'))
+
+        if answer == 'Again':
+            script()
+
+        elif answer == 'Create':
+            nuser = input(str('Please enter your username'))
+            npassword = input((str('Please enter your password')))
+            database[nuser] = npassword
+
+    print(database)
+
+script()
